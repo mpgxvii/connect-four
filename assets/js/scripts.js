@@ -320,12 +320,12 @@ function dropAI(row, col, rows, cols){                                //drop AI 
 }
 
 function droporig(col, rows, cols){                                   //drop circle/checker inside cell
-    var endrange = col * cols;
+    var endrange = col * rows;
     var beginrange = (endrange - rows) + 1;
     var target = endrange;
     var content = document.getElementById(target).textContent;
     var filled = document.getElementById(target).getAttribute("data-filled");
-
+    console.log(endrange);
     //check from bottom if filled and find first unfilled cell in column
     while((filled == "yes") && (target >= beginrange)){
       target--;
@@ -416,7 +416,7 @@ function setup(){                                       //set up number of rows 
         window.boardarray[x][y] = null;
         window.boardarray[x+1][y+1] = -1;               //initialize board represented by 2D array
         var colnode = document.createElement("TD");
-        colnode.setAttribute("id", (x+1)+(cols*y));
+        colnode.setAttribute("id", (x+1)+(rows*y));
         colnode.setAttribute("data-filled", "no");
         var circlenode = document.createElement("DIV");
         circlenode.setAttribute("class", "circle");
